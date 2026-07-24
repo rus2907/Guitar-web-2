@@ -10,20 +10,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --walnut-950:#241209;
-    --walnut-900:#2f1a0e;
-    --walnut-800:#3d2415;
-    --walnut-700:#513320;
-    --walnut-600:#6b4429;
-    --amber-500:#d99a4e;
-    --amber-400:#e2ac6a;
-    --amber-300:#f0c383;
-    --ivory-100:#f5ecdd;
-    --ivory-300:#d9c9ae;
-    --ivory-500:#b8a688;
-    --patina-400:#7fa38f;
-    --patina-300:#a1c0b0;
-    --ink-900:#1c0f07;
+    --walnut-950:#0c0c0c;
+    --walnut-900:#141414;
+    --walnut-800:#1c1a16;
+    --walnut-700:#2b2820;
+    --walnut-600:#3a3527;
+    --amber-500:#d4af37;
+    --amber-400:#e3c565;
+    --amber-300:#f0d98f;
+    --ivory-100:#f6f3ea;
+    --ivory-300:#cfc7b2;
+    --ivory-500:#948c74;
+    --patina-400:#c9c9c9;
+    --patina-300:#e2e2e2;
+    --ink-900:#161200;
     --danger:#d97a5f;
     --radius-sm:6px;
     --radius-md:14px;
@@ -234,8 +234,8 @@
   .about-tags{ display:flex; flex-wrap:wrap; gap:10px; margin-top:26px; }
   .tag{
     font-family:var(--font-mono); font-size:12px; letter-spacing:0.03em;
-    color:var(--patina-300); background:rgba(127,163,143,0.12);
-    border:1px solid rgba(127,163,143,0.3);
+    color:var(--patina-300); background:rgba(201,201,201,0.12);
+    border:1px solid rgba(201,201,201,0.3);
     padding:7px 14px; border-radius:999px;
   }
   @media (max-width:880px){ .about-grid{ grid-template-columns:1fr; } .about-photo{ max-width:320px; } }
@@ -348,12 +348,12 @@
 
   .confirm-panel{
     display:none; margin-top:32px; padding:26px; border-radius:var(--radius-md);
-    background:rgba(127,163,143,0.1); border:1px solid rgba(127,163,143,0.35);
+    background:rgba(201,201,201,0.1); border:1px solid rgba(201,201,201,0.35);
   }
   .confirm-panel.open{ display:block; }
   .confirm-panel h3{ color:var(--patina-300); font-size:19px; margin-bottom:8px; }
   .confirm-panel p{ color:var(--ivory-300); font-size:14.5px; margin:0 0 16px; }
-  .confirm-panel .btn-ghost{ border-color:rgba(127,163,143,0.4); font-size:14px; padding:10px 18px; }
+  .confirm-panel .btn-ghost{ border-color:rgba(201,201,201,0.4); font-size:14px; padding:10px 18px; }
 
   /* ---------- TESTIMONIALS ---------- */
   .quote-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
@@ -458,16 +458,16 @@
       <div class="strings-card" aria-hidden="true">
         <svg class="strings-svg" viewBox="0 0 320 180" fill="none">
           <rect x="0" y="0" width="320" height="180" rx="0" fill="none"/>
-          <line x1="20" y1="20" x2="300" y2="20" stroke="#8a6a45" stroke-width="1"/>
-          <line x1="20" y1="46" x2="300" y2="46" stroke="#8a6a45" stroke-width="1.4"/>
-          <line x1="20" y1="72" x2="300" y2="72" stroke="#8a6a45" stroke-width="1.8"/>
-          <line x1="20" y1="98" x2="300" y2="98" stroke="#8a6a45" stroke-width="2.2"/>
-          <line x1="20" y1="124" x2="300" y2="124" stroke="#8a6a45" stroke-width="2.6"/>
-          <line x1="20" y1="150" x2="300" y2="150" stroke="#8a6a45" stroke-width="3"/>
-          <circle cx="70" cy="46" r="4.5" fill="#d99a4e"/>
-          <circle cx="150" cy="98" r="4.5" fill="#d99a4e"/>
-          <circle cx="230" cy="20" r="4.5" fill="#d99a4e"/>
-          <circle cx="260" cy="150" r="4.5" fill="#d99a4e"/>
+          <line x1="20" y1="20" x2="300" y2="20" stroke="#7d7256" stroke-width="1"/>
+          <line x1="20" y1="46" x2="300" y2="46" stroke="#7d7256" stroke-width="1.4"/>
+          <line x1="20" y1="72" x2="300" y2="72" stroke="#7d7256" stroke-width="1.8"/>
+          <line x1="20" y1="98" x2="300" y2="98" stroke="#7d7256" stroke-width="2.2"/>
+          <line x1="20" y1="124" x2="300" y2="124" stroke="#7d7256" stroke-width="2.6"/>
+          <line x1="20" y1="150" x2="300" y2="150" stroke="#7d7256" stroke-width="3"/>
+          <circle cx="70" cy="46" r="4.5" fill="#d4af37"/>
+          <circle cx="150" cy="98" r="4.5" fill="#d4af37"/>
+          <circle cx="230" cy="20" r="4.5" fill="#d4af37"/>
+          <circle cx="260" cy="150" r="4.5" fill="#d4af37"/>
         </svg>
         <div class="stat-row">
           <div class="stat"><b>250+</b><span>students taught</span></div>
