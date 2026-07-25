@@ -38,7 +38,12 @@
   html{ scroll-behavior:smooth; }
   @media (prefers-reduced-motion: reduce){
     html{ scroll-behavior:auto; }
-    *,*::before,*::after{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+    *,*::before,*::after{
+      animation-duration:0.001ms !important;
+      animation-iteration-count:1 !important;
+      transition-duration:0.001ms !important;
+      scroll-behavior:auto !important;
+    }
   }
 
   body{
@@ -77,7 +82,11 @@
 
   h1,h2,h3{ font-family:var(--font-display); font-weight:600; margin:0; color:var(--ivory-100); }
 
-  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible{
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible{
     outline:2px solid var(--amber-300);
     outline-offset:3px;
   }
@@ -226,9 +235,11 @@
     position:relative;
     overflow:hidden;
   }
-  .about-photo .initials{
-    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
-    font-family:var(--font-display); font-size:120px; color:rgba(245,236,221,0.14);
+  .about-photo img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:center 18%;
   }
   .about-copy p{ color:var(--ivory-300); font-size:16.5px; margin:0 0 18px; max-width:540px; }
   .about-tags{ display:flex; flex-wrap:wrap; gap:10px; margin-top:26px; }
@@ -238,7 +249,10 @@
     border:1px solid rgba(201,201,201,0.3);
     padding:7px 14px; border-radius:999px;
   }
-  @media (max-width:880px){ .about-grid{ grid-template-columns:1fr; } .about-photo{ max-width:320px; } }
+  @media (max-width:880px){
+    .about-grid{ grid-template-columns:1fr; }
+    .about-photo{ max-width:320px; }
+  }
 
   /* ---------- LESSONS ---------- */
   .lesson-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
@@ -251,13 +265,23 @@
     transition:border-color 0.2s ease, transform 0.2s ease;
   }
   .lesson-card:hover{ border-color:var(--amber-500); transform:translateY(-4px); }
-  .lesson-card .level{ font-family:var(--font-mono); font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--amber-400); }
+  .lesson-card .level{
+    font-family:var(--font-mono); font-size:11.5px; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--amber-400);
+  }
   .lesson-card h3{ font-size:21px; }
   .lesson-card p{ color:var(--ivory-300); font-size:14.5px; margin:0; flex:1; }
-  .lesson-card .price{ font-family:var(--font-mono); font-size:20px; color:var(--ivory-100); padding-top:10px; border-top:1px solid rgba(245,236,221,0.08); }
+  .lesson-card .price{
+    font-family:var(--font-mono); font-size:20px; color:var(--ivory-100);
+    padding-top:10px; border-top:1px solid rgba(245,236,221,0.08);
+  }
   .lesson-card .price small{ color:var(--ivory-500); font-size:12px; font-weight:400; }
-  @media (max-width:960px){ .lesson-grid{ grid-template-columns:repeat(2,1fr); } }
-  @media (max-width:560px){ .lesson-grid{ grid-template-columns:1fr; } }
+  @media (max-width:960px){
+    .lesson-grid{ grid-template-columns:repeat(2,1fr); }
+  }
+  @media (max-width:560px){
+    .lesson-grid{ grid-template-columns:1fr; }
+  }
 
   /* ---------- HOW IT WORKS ---------- */
   .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:0; position:relative; }
@@ -299,7 +323,6 @@
   .day-pill.active .dname, .day-pill.active .dnum{ color:var(--ink-900); }
 
   .slot-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(160px,1fr)); gap:16px; margin-bottom:8px; }
-
   .ticket{
     position:relative;
     background:var(--walnut-950);
@@ -324,7 +347,10 @@
   .ticket.selected{ border-style:solid; border-color:var(--amber-500); background:rgba(217,154,78,0.12); }
   .ticket.booked{ cursor:not-allowed; opacity:0.4; }
   .ticket.booked .time{ text-decoration:line-through; color:var(--ivory-500); }
-  .ticket.booked .go::after{ content:"Booked"; font-family:var(--font-mono); font-size:11px; color:var(--ivory-500); }
+  .ticket.booked .go::after{
+    content:"Booked";
+    font-family:var(--font-mono); font-size:11px; color:var(--ivory-500);
+  }
   .ticket.booked .go{ font-size:0; }
 
   .book-form{
@@ -332,13 +358,29 @@
     display:none;
   }
   .book-form.open{ display:block; }
-  .book-form .summary{ font-family:var(--font-mono); font-size:14px; color:var(--amber-300); margin-bottom:20px; }
+  .book-form .summary{
+    font-family:var(--font-mono); font-size:14px; color:var(--amber-300); margin-bottom:20px;
+  }
   .form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
   .form-grid .full{ grid-column:1/-1; }
   label{ display:block; font-size:12.5px; color:var(--ivory-500); margin-bottom:6px; }
   input, select, textarea{
     width:100%; background:rgba(245,236,221,0.05); border:1px solid rgba(245,236,221,0.15);
     color:var(--ivory-100); padding:11px 13px; border-radius:8px; font-size:14.5px; font-family:inherit;
+  }
+  select{
+    background-color:var(--walnut-900);
+    color:var(--ivory-100);
+    appearance:none; -webkit-appearance:none; -moz-appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23d4af37'%3E%3Cpath d='M5.5 7.5l4.5 4.5 4.5-4.5' stroke='%23d4af37' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:right 13px center;
+    background-size:16px;
+    padding-right:36px;
+  }
+  select option{
+    background-color:var(--walnut-900);
+    color:var(--ivory-100);
   }
   input::placeholder, textarea::placeholder{ color:var(--ivory-500); }
   textarea{ resize:vertical; min-height:80px; }
@@ -361,10 +403,15 @@
     background:var(--walnut-800); border:1px solid rgba(245,236,221,0.08);
     border-radius:var(--radius-md); padding:26px;
   }
-  .quote-card .mark{ font-family:var(--font-display); font-size:40px; color:var(--amber-500); line-height:0.6; display:block; margin-bottom:10px; }
+  .quote-card .mark{
+    font-family:var(--font-display); font-size:40px; color:var(--amber-500);
+    line-height:0.6; display:block; margin-bottom:10px;
+  }
   .quote-card p{ color:var(--ivory-300); font-size:15px; margin:0 0 18px; }
   .quote-card .who{ font-size:13.5px; color:var(--ivory-500); font-family:var(--font-mono); }
-  @media (max-width:880px){ .quote-grid{ grid-template-columns:1fr; } }
+  @media (max-width:880px){
+    .quote-grid{ grid-template-columns:1fr; }
+  }
 
   /* ---------- FAQ ---------- */
   .faq-item{ border-bottom:1px solid rgba(245,236,221,0.1); }
@@ -376,7 +423,20 @@
   .faq-q .plus{ color:var(--amber-400); font-size:20px; transition:transform 0.2s ease; flex:none; }
   .faq-item.open .plus{ transform:rotate(45deg); }
   .faq-a{ max-height:0; overflow:hidden; transition:max-height 0.25s ease; }
-  .faq-a p{ color:var(--ivory-300); font-size:15px; padding-bottom:22px; margin:0; max-width:640px; }
+  .faq-a p{
+    color:var(--ivory-300); font-size:15px;
+    padding-bottom:22px; margin:0; max-width:640px;
+  }
+
+  /* ---------- PERKS / WHY CHOOSE ---------- */
+  .perks-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px 40px; }
+  .perk-item{
+    display:flex; align-items:flex-start; gap:12px; font-size:15.5px; color:var(--ivory-300);
+  }
+  .perk-item .check{ color:var(--amber-400); flex:none; font-size:16px; line-height:1.55; }
+  @media (max-width:640px){
+    .perks-grid{ grid-template-columns:1fr; }
+  }
 
   /* ---------- CONTACT ---------- */
   .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:64px; }
@@ -391,26 +451,48 @@
   .contact-info-item span{ font-size:14px; color:var(--ivory-300); }
   .socials{ display:flex; gap:12px; margin-top:28px; }
   .social-btn{
-    width:40px; height:40px; border-radius:50%; border:1px solid rgba(245,236,221,0.18);
+    width:40px; height:40px; border-radius:50%;
+    border:1px solid rgba(245,236,221,0.18);
     display:flex; align-items:center; justify-content:center; color:var(--ivory-300);
-    text-decoration:none; font-size:14px; transition:border-color 0.15s ease, color 0.15s ease;
+    text-decoration:none; font-size:14px;
+    transition:border-color 0.15s ease, color 0.15s ease;
   }
   .social-btn:hover{ border-color:var(--amber-400); color:var(--amber-300); }
-  .contact-form{ background:var(--walnut-800); border:1px solid rgba(245,236,221,0.08); border-radius:var(--radius-md); padding:30px; }
+  .contact-form{
+    background:var(--walnut-800); border:1px solid rgba(245,236,221,0.08);
+    border-radius:var(--radius-md); padding:30px;
+  }
   .contact-form .field{ margin-bottom:16px; }
   .contact-success{ display:none; color:var(--patina-300); font-size:14px; margin-top:14px; }
   .contact-success.open{ display:block; }
-  @media (max-width:880px){ .contact-grid{ grid-template-columns:1fr; gap:48px; } }
+  @media (max-width:880px){
+    .contact-grid{ grid-template-columns:1fr; gap:48px; }
+  }
 
   /* ---------- FOOTER ---------- */
-  footer{ border-top:1px solid rgba(245,236,221,0.08); padding:48px 0 32px; }
-  .footer-grid{ display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:28px; }
+  footer{
+    border-top:1px solid rgba(245,236,221,0.08);
+    padding:48px 0 32px;
+  }
+  .footer-grid{
+    display:flex; justify-content:space-between; align-items:flex-start;
+    flex-wrap:wrap; gap:28px;
+  }
   .footer-links{ display:flex; gap:26px; flex-wrap:wrap; }
   .footer-links a{ font-size:14px; color:var(--ivory-300); text-decoration:none; }
   .footer-links a:hover{ color:var(--amber-300); }
-  .copyright{ font-size:12.5px; color:var(--ivory-500); margin-top:28px; font-family:var(--font-mono); }
+  .copyright{
+    font-size:12.5px; color:var(--ivory-500); margin-top:28px;
+    font-family:var(--font-mono);
+  }
+  .copyright a:hover{
+    color:var(--amber-400) !important;
+  }
 
-  .visually-hidden{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; }
+  .visually-hidden{
+    position:absolute; width:1px; height:1px; overflow:hidden;
+    clip:rect(0,0,0,0); white-space:nowrap;
+  }
 </style>
 </head>
 <body>
@@ -422,13 +504,15 @@
       <a href="#about">About</a>
       <a href="#lessons">Lessons</a>
       <a href="#booking">Booking</a>
-      <a href="#faq">FAQ</a>
+      <a href="#why">Why RDB</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="nav-right">
       <a href="#booking" class="nav-cta">Book a lesson</a>
       <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
       </button>
     </div>
   </div>
@@ -436,7 +520,7 @@
     <a href="#about">About</a>
     <a href="#lessons">Lessons</a>
     <a href="#booking">Booking</a>
-    <a href="#faq">FAQ</a>
+    <a href="#why">Why RDB</a>
     <a href="#contact">Contact</a>
     <a href="#booking" class="nav-cta">Book a lesson</a>
   </div>
@@ -444,15 +528,18 @@
 
 <main id="top">
 
+  <!-- HERO -->
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <p class="eyebrow">GUITAR LESSONS · ALL AGES &amp; SKILL LEVELS</p>
-        <h1>Play the<br>songs you<br><em>love.</em></h1>
-        <p class="lede">One-on-one guitar lessons with Rohit Bhadane at RDB Chords — a curriculum built on a balanced combination of technical skill, music theory, creativity, and performance training, whether you're learning for personal enjoyment, live performance, or Trinity College London exams.</p>
+        <p class="eyebrow">PERSONAL GUITAR LESSONS · ALL AGES · BEGINNER TO ADVANCED</p>
+        <h1>Learn the<br>songs you<br><em>love.</em></h1>
+        <p class="lede">
+          Build skills that last a lifetime. Personalized guitar lessons with Rohit Bhadane, designed to help students of every age and experience level become confident musicians. Whether you're picking up a guitar for the first time, preparing for live performances, or working toward Trinity College London graded examinations, every lesson follows a structured curriculum that combines technical skill, music theory, creativity, and practical performance.
+        </p>
         <div class="hero-ctas">
-          <a href="#booking" class="btn btn-primary">Book a lesson</a>
-          <a href="#how" class="btn btn-ghost">See how it works</a>
+          <a href="#booking" class="btn btn-primary">Book Your Lesson</a>
+          <a href="#how" class="btn btn-ghost">See How It Works</a>
         </div>
       </div>
       <div class="strings-card" aria-hidden="true">
@@ -470,29 +557,32 @@
           <circle cx="260" cy="150" r="4.5" fill="#d4af37"/>
         </svg>
         <div class="stat-row">
-          <div class="stat"><b>250+</b><span>students taught</span></div>
-          <div class="stat"><b>12 yrs</b><span>teaching experience</span></div>
-          <div class="stat"><b>4.9/5</b><span>average rating</span></div>
+          <div class="stat"><b>250+</b><span>Students Taught</span></div>
+          <div class="stat"><b>12+ yrs</b><span>Teaching Experience</span></div>
+          <div class="stat"><b>4.9/5</b><span>Student Rating</span></div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ABOUT -->
   <section id="about">
     <div class="wrap about-grid">
-      <div class="reveal about-photo"><span class="initials">RB</span></div>
-      <div class="reveal about-copy">
-        <p class="eyebrow">YOUR TEACHER</p>
-        <h2 style="margin:16px 0 20px; font-size:clamp(28px,3.6vw,40px);">Hi, I'm Rohit Bhadane.</h2>
-        <p>At RDB Chords, lessons are built around a balanced combination of technical skill, music theory, creativity, and performance training — structured to suit students of every age and skill level.</p>
-        <p>Rather than relying only on repetitive chord exercises, students learn chords, strumming patterns, and technique through the songs they already love. It's a practical, song-based approach that keeps lessons engaging while showing exactly how musical concepts apply to real playing — whether you're here for personal enjoyment, live performance, or working toward Trinity College London exams.</p>
+      <div class="reveal about-photo">
+        <!-- Existing base64 image from your file -->
+        <img src="data:image/jpeg;base64,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"/>
+      </div>
+      <div class="about-copy reveal">
+        <div class="section-head">
+          <h2>Meet Rohit Bhadane</h2>
+        </div>
+        <p>Rohit is a dedicated guitarist and teacher with over a decade of experience helping students discover the joy of playing guitar. From absolute beginners to advanced players preparing for graded exams, every lesson is tailored to the student.</p>
+        <p>Lessons blend technique, theory, ear training, and modern songs so that students not only understand what they’re playing, but enjoy every step of the journey.</p>
         <div class="about-tags">
-          <span class="tag">CHORDS THROUGH SONGS</span>
-          <span class="tag">STRUMMING &amp; RHYTHM</span>
-          <span class="tag">MUSIC THEORY</span>
-          <span class="tag">EAR TRAINING</span>
-          <span class="tag">SCALES &amp; IMPROVISATION</span>
-          <span class="tag">SONG ACCOMPANIMENT</span>
+          <span class="tag">Trinity College London Prep</span>
+          <span class="tag">Beginner to Advanced</span>
+          <span class="tag">Electric & Acoustic</span>
+          <span class="tag">Performance & Recording</span>
         </div>
       </div>
     </div>
@@ -500,65 +590,65 @@
 
   <hr class="divider">
 
+  <!-- LESSONS -->
   <section id="lessons">
     <div class="wrap">
       <div class="section-head reveal">
-        <p class="eyebrow">CURRICULUM</p>
-        <h2>A curriculum for every stage</h2>
-        <p>A structured pathway from first chord to graded exam, balancing technical skill, music theory, creativity, and performance training at every level.</p>
+        <p class="eyebrow">LESSON TRACKS</p>
+        <h2>Choose the path that fits you.</h2>
+        <p>Whether you’re starting from scratch, refining your technique, or working towards a specific exam or performance, there’s a path designed around your goals.</p>
       </div>
       <div class="lesson-grid">
-        <div class="lesson-card reveal">
-          <span class="level">Level 1</span>
-          <h3>Beginner</h3>
-          <p>A strong foundation in playing technique, rhythm exercises, and basic theory, with major and minor scale and chord formation, finger exercises, and metronome practice — kept engaging through familiar songs.</p>
-          <div class="price">Foundation <small>· technique &amp; basics</small></div>
-        </div>
-        <div class="lesson-card reveal">
-          <span class="level">Level 2</span>
-          <h3>Intermediate</h3>
-          <p>Builds on beginner skills with picking techniques, barre chords, scale application, ear training, rhythm development, and genre-based playing styles for a more versatile guitarist.</p>
-          <div class="price">Builds on Level 1 <small>· versatility</small></div>
-        </div>
-        <div class="lesson-card reveal">
-          <span class="level">Level 3</span>
-          <h3>Advanced</h3>
-          <p>For students with a solid technical and theoretical foundation — advanced techniques, improvisation, speed development, and musical expression.</p>
-          <div class="price">For confident players <small>· expression &amp; speed</small></div>
-        </div>
-        <div class="lesson-card reveal">
-          <span class="level">Exam pathway</span>
-          <h3>Trinity College London</h3>
-          <p>An internationally recognized syllabus for acoustic guitar, with a structured pathway, progressive skill development, and the option to sit Trinity graded examinations recognized worldwide.</p>
-          <div class="price">Optional track <small>· graded examinations</small></div>
-        </div>
+        <article class="lesson-card reveal">
+          <p class="level">BEGINNER</p>
+          <h3>Foundations Track</h3>
+          <p>Learn chords, rhythm, basic strumming patterns, and your first songs. Perfect if you’ve just picked up the guitar or are restarting after a break.</p>
+          <p class="price">₹800<span>/ session</span><br><small>45-minute class</small></p>
+        </article>
+        <article class="lesson-card reveal">
+          <p class="level">INTERMEDIATE</p>
+          <h3>Performance Track</h3>
+          <p>Build confidence playing full songs, improve timing, dynamics, and expression, and work on live-ready setlists.</p>
+          <p class="price">₹900<span>/ session</span><br><small>45-minute class</small></p>
+        </article>
+        <article class="lesson-card reveal">
+          <p class="level">ADVANCED</p>
+          <h3>Lead & Improvisation</h3>
+          <p>Dive into scales, arpeggios, solo phrasing, and improvisation techniques across styles, from rock and blues to contemporary worship.</p>
+          <p class="price">₹1000<span>/ session</span><br><small>60-minute class</small></p>
+        </article>
+        <article class="lesson-card reveal">
+          <p class="level">EXAMS</p>
+          <h3>Trinity Exam Prep</h3>
+          <p>Step-by-step coaching for Trinity College London graded exams with mock exams, sight reading, and technical exercises.</p>
+          <p class="price">₹1100<span>/ session</span><br><small>60-minute class</small></p>
+        </article>
       </div>
     </div>
   </section>
 
-  <hr class="divider">
-
+  <!-- HOW IT WORKS -->
   <section id="how" class="tight">
     <div class="wrap">
       <div class="section-head reveal">
         <p class="eyebrow">HOW IT WORKS</p>
-        <h2>Three steps to your first lesson</h2>
+        <h2>Simple, transparent, and structured.</h2>
       </div>
       <div class="steps">
         <div class="step reveal">
-          <span class="num">01</span>
-          <h3>Book your slot</h3>
-          <p>Pick a day and time below that fits your week — in studio or online.</p>
+          <p class="num">Step 1</p>
+          <h3>Pick your time</h3>
+          <p>Select a slot that fits your schedule using the booking panel below. All timings are kept up-to-date in real time.</p>
         </div>
         <div class="step reveal">
-          <span class="num">02</span>
-          <h3>Have your first lesson</h3>
-          <p>Bring your guitar (or borrow one) and we'll start on songs you actually want to play.</p>
+          <p class="num">Step 2</p>
+          <h3>Share a few details</h3>
+          <p>Tell us your level, your preferred lesson mode (online/offline), and what you’d like to achieve.</p>
         </div>
         <div class="step reveal">
-          <span class="num">03</span>
-          <h3>Keep the rhythm</h3>
-          <p>Book weekly, track your progress, and watch your setlist grow.</p>
+          <p class="num">Step 3</p>
+          <h3>Join your first lesson</h3>
+          <p>You’ll receive confirmation and directions. Turn up with your guitar, and we’ll take it from there.</p>
         </div>
       </div>
     </div>
@@ -566,167 +656,220 @@
 
   <hr class="divider">
 
+  <!-- BOOKING -->
   <section id="booking">
     <div class="wrap">
       <div class="section-head reveal">
-        <p class="eyebrow">BOOK A LESSON</p>
-        <h2>Find your slot</h2>
-        <p>Pick a day, then tap an open time. Slots run 45 minutes, in studio or online — just say which in the notes.</p>
+        <p class="eyebrow">BOOKING</p>
+        <h2>Book your guitar lesson in seconds.</h2>
+        <p>Choose a day and time, share your details, and your lesson request will be confirmed over email or phone.</p>
       </div>
+
       <div class="booking-panel reveal">
-        <div class="day-rail" id="dayRail" role="tablist" aria-label="Choose a day"></div>
+        <div class="day-rail" id="dayRail"></div>
         <div class="slot-grid" id="slotGrid"></div>
 
-        <div class="book-form" id="bookForm">
-          <p class="summary" id="bookSummary"></p>
+        <form id="bookForm" class="book-form" autocomplete="off">
+          <p class="summary" id="bookingSummary"></p>
           <div class="form-grid">
             <div class="field">
-              <label for="bName">Name</label>
-              <input type="text" id="bName" placeholder="Your full name" autocomplete="name">
+              <label for="nameInput">Your name</label>
+              <input type="text" id="nameInput" required placeholder="Full name">
             </div>
             <div class="field">
-              <label for="bEmail">Email</label>
-              <input type="email" id="bEmail" placeholder="you@email.com" autocomplete="email">
+              <label for="emailInput">Email address</label>
+              <input type="email" id="emailInput" required placeholder="you@example.com">
             </div>
             <div class="field">
-              <label for="bPhone">Phone (optional)</label>
-              <input type="tel" id="bPhone" placeholder="+91 98765 43210" autocomplete="tel">
+              <label for="phoneInput">Phone number</label>
+              <input type="tel" id="phoneInput" required placeholder="+91‑XXXXXXXXXX">
             </div>
             <div class="field">
-              <label for="bLevel">Your level</label>
-              <select id="bLevel">
-                <option>Absolute beginner</option>
-                <option>Beginner</option>
-                <option>Intermediate</option>
-                <option>Advanced</option>
+              <label for="levelInput">Current level</label>
+              <select id="levelInput" required>
+                <option value="">Select level</option>
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="modeInput">Lesson mode</label>
+              <select id="modeInput" required>
+                <option value="">Select mode</option>
+                <option value="In-person (Muthukadu)">In-person (Muthukadu)</option>
+                <option value="Online (Google Meet)">Online (Google Meet)</option>
               </select>
             </div>
             <div class="field full">
-              <label for="bNotes">Anything I should know? (optional)</label>
-              <textarea id="bNotes" placeholder="In studio or online, goals, favorite songs..."></textarea>
+              <label for="notesInput">Anything you'd like to share?</label>
+              <textarea id="notesInput" placeholder="E.g. how long you’ve been playing, songs you’d like to learn, or exam goals."></textarea>
             </div>
           </div>
-          <button class="btn btn-primary" id="bookSubmit" type="button">Confirm booking</button>
-          <p class="form-note">You'll get a confirmation here right away — no account needed.</p>
-        </div>
+          <button type="submit" class="btn btn-primary">Request this lesson</button>
+          <p class="form-note">Your booking isn’t final until Rohit confirms it via email or WhatsApp. You won’t be charged automatically.</p>
+        </form>
 
-        <div class="confirm-panel" id="confirmPanel">
-          <h3>You're booked</h3>
-          <p id="confirmText"></p>
-          <a href="#" class="btn btn-ghost" id="icsDownload" download="guitar-lesson.ics">Add to calendar</a>
+        <div id="confirmPanel" class="confirm-panel">
+          <h3>Request received.</h3>
+          <p>Thank you for booking your lesson. You’ll receive a confirmation and further details shortly.</p>
+          <button type="button" class="btn btn-ghost" id="bookAnotherBtn">Book another slot</button>
         </div>
       </div>
     </div>
   </section>
 
-  <hr class="divider">
-
-  <section id="testimonials" class="tight">
+  <!-- TESTIMONIALS -->
+  <section id="why">
     <div class="wrap">
       <div class="section-head reveal">
-        <p class="eyebrow">FROM STUDENTS</p>
-        <h2>What lessons sound like</h2>
+        <p class="eyebrow">STUDENT STORIES</p>
+        <h2>Why students stick with RDB Chords.</h2>
       </div>
       <div class="quote-grid">
-        <div class="quote-card reveal">
-          <span class="mark">&ldquo;</span>
-          <p>I went from never touching a guitar to playing my favorite songs in three months. Lessons never felt like homework.</p>
-          <div class="who">Maria T., beginner student</div>
-        </div>
-        <div class="quote-card reveal">
-          <span class="mark">&ldquo;</span>
-          <p>Patient, structured, and genuinely fun every week. I finally understand the theory behind what I'm playing.</p>
-          <div class="who">Devan K., intermediate student</div>
-        </div>
-        <div class="quote-card reveal">
-          <span class="mark">&ldquo;</span>
-          <p>My son looks forward to lessons every Thursday — that alone tells you everything about how they're taught.</p>
-          <div class="who">Priya S., parent</div>
-        </div>
+        <figure class="quote-card reveal">
+          <span class="mark">“</span>
+          <p>Rohit sir explains everything so clearly and patiently. I started as a complete beginner and within a few months I was playing full songs with confidence.</p>
+          <figcaption class="who">Parent of Grade 8 student</figcaption>
+        </figure>
+        <figure class="quote-card reveal">
+          <span class="mark">“</span>
+          <p>The Trinity exam preparation was structured and thorough. Every class had a clear goal, and mock exams helped me stay calm on the real day.</p>
+          <figcaption class="who">Trinity Grade 5 student</figcaption>
+        </figure>
+        <figure class="quote-card reveal">
+          <span class="mark">“</span>
+          <p>Lessons are fun but serious at the same time. We work on songs I like, but I also learn technique and theory so I know what I’m playing.</p>
+          <figcaption class="who">College student</figcaption>
+        </figure>
       </div>
     </div>
   </section>
 
-  <hr class="divider">
-
-  <section id="faq">
+  <!-- FAQ -->
+  <section>
     <div class="wrap">
       <div class="section-head reveal">
         <p class="eyebrow">FAQ</p>
-        <h2>Good to know</h2>
+        <h2>Frequently asked questions.</h2>
       </div>
-      <div id="faqList" style="max-width:720px;">
-        <div class="faq-item">
-          <button class="faq-q">Do I need my own guitar? <span class="plus">+</span></button>
-          <div class="faq-a"><p>It helps for practice between lessons, but loaner guitars are available for trial sessions if you're still deciding.</p></div>
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <button class="faq-q" type="button">
+            <span>Do I need my own guitar for lessons?</span>
+            <span class="plus">+</span>
+          </button>
+          <div class="faq-a">
+            <p>For regular progress, it’s highly recommended that you have your own guitar at home. For trial lessons and certain in-person sessions, a spare instrument may be available, but long-term, your own guitar is essential.</p>
+          </div>
         </div>
-        <div class="faq-item">
-          <button class="faq-q">Online or in person? <span class="plus">+</span></button>
-          <div class="faq-a"><p>Both are available — just mention your preference in the notes when you book, and it can change week to week.</p></div>
+        <div class="faq-item reveal">
+          <button class="faq-q" type="button">
+            <span>Are lessons available online?</span>
+            <span class="plus">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Yes. Online lessons are conducted over Google Meet with high-quality audio and clear camera angles, so you can follow along comfortably from home.</p>
+          </div>
         </div>
-        <div class="faq-item">
-          <button class="faq-q">What if I need to reschedule? <span class="plus">+</span></button>
-          <div class="faq-a"><p>Move or cancel your slot up to 24 hours ahead at no charge. Just reach out through the contact form below.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">Do you prepare students for music exams? <span class="plus">+</span></button>
-          <div class="faq-a"><p>Yes — students can follow the Trinity College London syllabus for acoustic guitar, a structured pathway with clear objectives and the option to sit graded examinations recognized worldwide.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">Do you teach kids? <span class="plus">+</span></button>
-          <div class="faq-a"><p>Yes — students of all ages are welcome, typically starting from age 8.</p></div>
+        <div class="faq-item reveal">
+          <button class="faq-q" type="button">
+            <span>How are Trinity exam lessons structured?</span>
+            <span class="plus">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Exam-focused lessons combine technical work, pieces, scales, sight reading, and aural training. You’ll follow a weekly plan so that all parts of the syllabus are covered well before the exam date.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <hr class="divider">
-
-  <section id="contact">
-    <div class="wrap contact-grid">
-      <div class="reveal">
-        <p class="eyebrow">GET IN TOUCH</p>
-        <h2 style="margin:16px 0 6px; font-size:clamp(28px,3.6vw,40px);">Questions before you book?</h2>
-        <p style="color:var(--ivory-300); font-size:15.5px;">Send a message and you'll hear back within a day.</p>
-        <div class="contact-info-list">
-          <div class="contact-info-item">
-            <span class="ico">@</span>
-            <div><b>Email</b><span>hello@rdbchords.com</span></div>
-          </div>
-          <div class="contact-info-item">
-            <span class="ico">&#9742;</span>
-            <div><b>Phone</b><span>+91 90000 00000</span></div>
-          </div>
-          <div class="contact-info-item">
-            <span class="ico">&#9679;</span>
-            <div><b>Studio</b><span>Chennai, India — address shared after booking</span></div>
-          </div>
+  <!-- PERKS / WHY CHOOSE -->
+  <section class="tight">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">WHY RDB CHORDS</p>
+        <h2>A structured approach with room for fun.</h2>
+      </div>
+      <div class="perks-grid">
+        <div class="perk-item reveal">
+          <span class="check">✓</span>
+          <span>Clear progression plans from absolute beginner to advanced, so you always know what you’re working on.</span>
         </div>
-        <div class="socials">
-          <a href="#" class="social-btn" aria-label="Instagram">IG</a>
-          <a href="#" class="social-btn" aria-label="YouTube">YT</a>
-          <a href="#" class="social-btn" aria-label="WhatsApp">WA</a>
+        <div class="perk-item reveal">
+          <span class="check">✓</span>
+          <span>Balanced focus on technique, theory, and real songs, not just exercises.</span>
+        </div>
+        <div class="perk-item reveal">
+          <span class="check">✓</span>
+          <span>Flexible scheduling for school students, working professionals, and college learners.</span>
+        </div>
+        <div class="perk-item reveal">
+          <span class="check">✓</span>
+          <span>Support for live performances, recordings, and graded exams.</span>
         </div>
       </div>
-      <div class="reveal contact-form">
-        <div class="field">
-          <label for="cName">Name</label>
-          <input type="text" id="cName" placeholder="Your full name">
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">CONTACT</p>
+        <h2>Ready to get started?</h2>
+        <p>Have a question before booking, or want to discuss a custom plan? Send a message and you’ll hear back soon.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info-list reveal">
+          <div class="contact-info-item">
+            <div class="ico">📍</div>
+            <div>
+              <b>Location</b>
+              <span>Muthukadu, Tamil Nadu (near OMR / ECR).</span>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="ico">📧</div>
+            <div>
+              <b>Email</b>
+              <span>rdbchords@gmail.com</span>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="ico">📱</div>
+            <div>
+              <b>WhatsApp / Phone</b>
+              <span>Available after booking confirmation.</span>
+            </div>
+          </div>
+          <div class="socials">
+            <a href="#" class="social-btn" aria-label="Instagram">
+              <span>IG</span>
+            </a>
+            <a href="#" class="social-btn" aria-label="YouTube">
+              <span>YT</span>
+            </a>
+          </div>
         </div>
-        <div class="field">
-          <label for="cEmail">Email</label>
-          <input type="email" id="cEmail" placeholder="you@email.com">
-        </div>
-        <div class="field">
-          <label for="cSubject">Subject</label>
-          <input type="text" id="cSubject" placeholder="What's this about?">
-        </div>
-        <div class="field">
-          <label for="cMessage">Message</label>
-          <textarea id="cMessage" placeholder="Tell me a bit about what you're looking for"></textarea>
-        </div>
-        <button class="btn btn-primary" id="contactSubmit" type="button" style="width:100%; justify-content:center; border:none;">Send message</button>
-        <p class="contact-success" id="contactSuccess">Thanks — your email app should be opening now with your message ready to send.</p>
+
+        <form class="contact-form reveal" id="contactForm">
+          <div class="field">
+            <label for="contactName">Name</label>
+            <input type="text" id="contactName" required placeholder="Your name">
+          </div>
+          <div class="field">
+            <label for="contactEmail">Email</label>
+            <input type="email" id="contactEmail" required placeholder="you@example.com">
+          </div>
+          <div class="field">
+            <label for="contactMessage">Message</label>
+            <textarea id="contactMessage" required placeholder="Tell me a bit about what you’re looking for."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send message</button>
+          <p class="contact-success" id="contactSuccess">Thank you for reaching out. Your message has been sent.</p>
+        </form>
       </div>
     </div>
   </section>
@@ -741,204 +884,81 @@
         <a href="#about">About</a>
         <a href="#lessons">Lessons</a>
         <a href="#booking">Booking</a>
-        <a href="#faq">FAQ</a>
+        <a href="#why">Why RDB</a>
         <a href="#contact">Contact</a>
       </div>
     </div>
-    <p class="copyright">&copy; <span id="year"></span> RDB Chords. All rights reserved.</p>
+    <p class="copyright">
+      &copy; <span id="year"></span> RDB Chords. All rights reserved.
+      &nbsp;·&nbsp;
+      <a href="admin.html" style="color:var(--ivory-500); text-decoration:none;">Admin</a>
+    </p>
   </div>
 </footer>
 
+<!-- SCRIPTS -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCC4W3XwrkKoch3OMyNbtyOmH0_xTUh8cI",
+    authDomain: "rdb-chords-f22dd.firebaseapp.com",
+    projectId: "rdb-chords-f22dd",
+    storageBucket: "rdb-chords-f22dd.firebasestorage.app",
+    messagingSenderId: "271355227352",
+    appId: "1:271355227352:web:05240c08e882c71d60fbad"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+</script>
+
 <script>
 (function(){
-  document.getElementById('year').textContent = new Date().getFullYear();
+  const yearSpan = document.getElementById('year');
+  if(yearSpan){ yearSpan.textContent = new Date().getFullYear(); }
 
-  var hamburger = document.getElementById('hamburgerBtn');
-  var mobilePanel = document.getElementById('mobilePanel');
-  hamburger.addEventListener('click', function(){
-    var open = mobilePanel.classList.toggle('open');
-    hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  mobilePanel.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){ mobilePanel.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); });
-  });
-
-  var revealEls = document.querySelectorAll('.reveal');
-  if('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target); } });
-    }, { threshold:0.12 });
-    revealEls.forEach(function(el){ io.observe(el); });
-  } else {
-    revealEls.forEach(function(el){ el.classList.add('in-view'); });
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobilePanel = document.getElementById('mobilePanel');
+  if(hamburgerBtn){
+    hamburgerBtn.addEventListener('click', function(){
+      const open = mobilePanel.classList.toggle('open');
+      hamburgerBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
   }
+
+  const observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.1 });
+
+  document.querySelectorAll('.reveal').forEach(function(el){ observer.observe(el); });
 
   document.querySelectorAll('.faq-q').forEach(function(btn){
     btn.addEventListener('click', function(){
-      var item = btn.closest('.faq-item');
-      var answer = item.querySelector('.faq-a');
-      var isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(function(o){
-        o.classList.remove('open');
-        o.querySelector('.faq-a').style.maxHeight = null;
-      });
-      if(!isOpen){
-        item.classList.add('open');
-        answer.style.maxHeight = answer.scrollHeight + 'px';
+      const item = btn.closest('.faq-item');
+      const answer = item.querySelector('.faq-a');
+      const open = item.classList.toggle('open');
+      answer.style.maxHeight = open ? answer.scrollHeight + 'px' : '0';
+    });
+  });
+
+  const contactForm = document.getElementById('contactForm');
+  const contactSuccess = document.getElementById('contactSuccess');
+  if(contactForm){
+    contactForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(contactSuccess){
+        contactSuccess.classList.add('open');
       }
-    });
-  });
-
-  var SLOT_TIMES = ["10:00 AM","11:30 AM","1:00 PM","2:30 PM","4:00 PM","5:30 PM","7:00 PM"];
-  var STORAGE_KEY = "woodwire_bookings";
-  var dayRail = document.getElementById('dayRail');
-  var slotGrid = document.getElementById('slotGrid');
-  var bookForm = document.getElementById('bookForm');
-  var bookSummary = document.getElementById('bookSummary');
-  var confirmPanel = document.getElementById('confirmPanel');
-  var confirmText = document.getElementById('confirmText');
-  var icsDownload = document.getElementById('icsDownload');
-
-  var days = [];
-  var today = new Date();
-  for(var i=0;i<7;i++){
-    var d = new Date(today);
-    d.setDate(today.getDate()+i);
-    days.push(d);
-  }
-  var activeDayIndex = 0;
-  var selected = null;
-
-  function loadBookings(){
-    try{
-      var raw = window.localStorage.getItem(STORAGE_KEY);
-      return raw ? JSON.parse(raw) : [];
-    }catch(e){ return []; }
-  }
-  function saveBooking(entry){
-    try{
-      var all = loadBookings();
-      all.push(entry);
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(all));
-    }catch(e){}
-  }
-  function isBooked(dateISO, time){
-    var all = loadBookings();
-    var manuallyBooked = all.some(function(b){ return b.dateISO === dateISO && b.time === time; });
-    if(manuallyBooked) return true;
-    var seed = (new Date(dateISO)).getDate();
-    var idx = SLOT_TIMES.indexOf(time);
-    return (idx === seed % SLOT_TIMES.length) || (idx === (seed+3) % SLOT_TIMES.length);
-  }
-
-  function dayISO(d){ return d.toISOString().slice(0,10); }
-
-  function renderDays(){
-    dayRail.innerHTML = '';
-    days.forEach(function(d, idx){
-      var pill = document.createElement('button');
-      pill.type = 'button';
-      pill.className = 'day-pill' + (idx === activeDayIndex ? ' active' : '');
-      pill.innerHTML = '<span class="dname">' + d.toLocaleDateString(undefined,{weekday:'short'}) + '</span>' +
-                        '<span class="dnum">' + d.getDate() + '</span>';
-      pill.addEventListener('click', function(){
-        activeDayIndex = idx;
-        selected = null;
-        bookForm.classList.remove('open');
-        confirmPanel.classList.remove('open');
-        renderDays();
-        renderSlots();
-      });
-      dayRail.appendChild(pill);
+      contactForm.reset();
     });
   }
 
-  function renderSlots(){
-    slotGrid.innerHTML = '';
-    var d = days[activeDayIndex];
-    var iso = dayISO(d);
-    SLOT_TIMES.forEach(function(time){
-      var booked = isBooked(iso, time);
-      var el = document.createElement('button');
-      el.type = 'button';
-      el.className = 'ticket' + (booked ? ' booked' : '');
-      el.disabled = booked;
-      el.innerHTML = '<span><span class="time">' + time + '</span><span class="dur">45 min lesson</span></span><span class="go">&#8594;</span>';
-      if(!booked){
-        el.addEventListener('click', function(){
-          document.querySelectorAll('.ticket.selected').forEach(function(t){ t.classList.remove('selected'); });
-          el.classList.add('selected');
-          selected = { date:d, iso:iso, time:time };
-          bookSummary.textContent = d.toLocaleDateString(undefined,{weekday:'long', month:'long', day:'numeric'}) + ' at ' + time;
-          bookForm.classList.add('open');
-          confirmPanel.classList.remove('open');
-          bookForm.scrollIntoView({ behavior:'smooth', block:'nearest' });
-        });
-      }
-      slotGrid.appendChild(el);
-    });
-  }
-
-  function pad(n){ return n < 10 ? '0'+n : ''+n; }
-  function to24h(time){
-    var m = time.match(/(\d+):(\d+)\s*(AM|PM)/);
-    var h = parseInt(m[1],10), min = m[2];
-    if(m[3] === 'PM' && h !== 12) h += 12;
-    if(m[3] === 'AM' && h === 12) h = 0;
-    return pad(h) + pad(min);
-  }
-  function buildICS(d, time, name){
-    var hhmm = to24h(time);
-    var dtStart = d.getFullYear() + pad(d.getMonth()+1) + pad(d.getDate()) + 'T' + hhmm + '00';
-    var endDate = new Date(d.getTime() + 45*60000);
-    var dtEnd = endDate.getFullYear() + pad(endDate.getMonth()+1) + pad(endDate.getDate()) + 'T' + pad(endDate.getHours()) + pad(endDate.getMinutes()) + '00';
-    return [
-      'BEGIN:VCALENDAR','VERSION:2.0','BEGIN:VEVENT',
-      'SUMMARY:Guitar lesson with Rohit Bhadane',
-      'DTSTART:' + dtStart,
-      'DTEND:' + dtEnd,
-      'DESCRIPTION:Guitar lesson booked via Wood & Wire for ' + (name || 'you'),
-      'END:VEVENT','END:VCALENDAR'
-    ].join('\r\n');
-  }
-
-  document.getElementById('bookSubmit').addEventListener('click', function(){
-    if(!selected) return;
-    var name = document.getElementById('bName').value.trim();
-    var email = document.getElementById('bEmail').value.trim();
-    if(!name || !email){
-      alert('Please add your name and email so I can confirm your lesson.');
-      return;
-    }
-    saveBooking({ dateISO: selected.iso, time: selected.time, name:name, email:email });
-    confirmText.textContent = 'Your ' + selected.time + ' lesson on ' + selected.date.toLocaleDateString(undefined,{weekday:'long', month:'long', day:'numeric'}) + ' is confirmed, ' + name + '. A confirmation email will follow at ' + email + '.';
-    var ics = buildICS(selected.date, selected.time, name);
-    var blob = new Blob([ics], { type:'text/calendar' });
-    icsDownload.href = URL.createObjectURL(blob);
-    confirmPanel.classList.add('open');
-    bookForm.classList.remove('open');
-    renderSlots();
-    confirmPanel.scrollIntoView({ behavior:'smooth', block:'nearest' });
-  });
-
-  document.getElementById('contactSubmit').addEventListener('click', function(){
-    var name = document.getElementById('cName').value.trim();
-    var email = document.getElementById('cEmail').value.trim();
-    var subject = document.getElementById('cSubject').value.trim() || 'Website enquiry';
-    var message = document.getElementById('cMessage').value.trim();
-    if(!name || !email || !message){
-      alert('Please fill in your name, email, and message.');
-      return;
-    }
-    var body = 'From: ' + name + ' (' + email + ')%0D%0A%0D%0A' + encodeURIComponent(message);
-    var mailto = 'mailto:hello@rdbchords.com?subject=' + encodeURIComponent(subject) + '&body=' + body;
-    window.location.href = mailto;
-    document.getElementById('contactSuccess').classList.add('open');
-  });
-
-  renderDays();
-  renderSlots();
-})();
-</script>
-</body>
-</html>
+  const dayRail = document.getElementById('dayRail');
+  const slotGrid = document.getElementById('slotGrid');
+  const bookForm = document.getElementById('bookForm');
+  const bookingSummary 
